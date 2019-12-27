@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>homie</title>
+ </head>
+ <body style="background-color:#000000"; width: 100%; max.width: 200px; margin: auto>
+
+  <script>
+   function updateTemperature1()
+   {
+      fetch( "/getdyntemp1" )
+         .then( response => {
+            if( !response.ok )
+               throw new Error( "fetch failed" ) ;
+            return response.json() ;
+         } )
+         .then( json => document.querySelector("#getdyntemp1").textContent = json.getdyntemp1 )
+   }
+   updateTemperature1() ;
+   setInterval( updateTemperature1, 1000 ) ;
+  </script>
+
+  <script>
+   function updateTemperature2()
+   {
+      fetch( "/getdyntemp2" )
+         .then( response => {
+            if( !response.ok )
+               throw new Error( "fetch failed" ) ;
+            return response.json() ;
+         } )
+         .then( json => document.querySelector("#getdyntemp2").textContent = json.getdyntemp2 )
+   }
+   updateTemperature2() ;
+   setInterval( updateTemperature2, 1000 ) ;
+  </script>
+
+  <script>
+   function updateCPUTemperature()
+   {
+      fetch( "/getdyncputemp" )
+         .then( response => {
+            if( !response.ok )
+               throw new Error( "fetch failed" ) ;
+            return response.json() ;
+         } )
+         .then( json => document.querySelector("#getdyncputemp").textContent = json.getdyncputemp )
+   }
+   updateCPUTemperature() ;
+   setInterval( updateCPUTemperature, 1000 ) ;
+  </script>
+
+  <script>
+   function updateRASPIVolt()
+   {
+      fetch( "/getdynraspivolt" )
+         .then( response => {
+            if( !response.ok )
+               throw new Error( "fetch failed" ) ;
+            return response.json() ;
+         } )
+         .then( json => document.querySelector("#getdynraspivolt").textContent = json.getdynraspivolt )
+   }
+   updateRASPIVolt() ;
+   setInterval( updateRASPIVolt, 1000 ) ;
+  </script>
+
+  <script>
+   function updateVoltage1()
+   {
+      fetch( "/getdynvolt1" )
+         .then( response => {
+            if( !response.ok )
+               throw new Error( "fetch failed" ) ;
+            return response.json() ;
+         } )
+         .then( json => document.querySelector("#getdynvolt1").textContent = json.getdynvolt1 )
+   }
+   updateVoltage1() ;
+   setInterval( updateVoltage1, 1000 ) ;
+  </script>
+
+  <script>
+   function updateRPM()
+   {
+      fetch( "/getdynrpm1" )
+         .then( response => {
+            if( !response.ok )
+               throw new Error( "fetch failed" ) ;
+            return response.json() ;
+         } )
+         .then( json => document.querySelector("#getdynrpm1").textContent = json.getdynrpm1 )
+   }
+   updateRPM() ;
+   setInterval( updateRPM, 1000 ) ;
+  </script>
+
+
+    <table border="1" width="100%" height="40%" style="background-color:rgb(0,0,0)" margin=auto>
+        <tbody>
+                <tr>
+                    <td style="color:white;font-size:55px";align="left"><b>Voltage</b></td>
+                    <td style="color:white;font-size:55px";align="left"><b><span id="getdynvolt1"></span> V<b></td>
+                </tr>
+                <tr>
+                    <td style="color:white;font-size:55px";align="left"><b>Temperature1</b></td>
+                    <td style="color:white;font-size:55px";align="left"><b><span id= "getdyntemp1"></span> °C<b></td>
+                </tr>
+                <tr>
+                    <td style="color:white;font-size:55px";align="left"><b>Temperature2</b></td>
+                    <td style="color:white;font-size:55px";align="left"><b><span id= "getdyntemp2"></span> °C<b></td>
+                </tr>
+                <tr>
+                    <td style="color:white;font-size:55px";align="left"><b>CPUTemp</b></td>
+                    <td style="color:white;font-size:55px";align="left"><b><span id="getdyncputemp"></span> °C<b></td>
+                </tr>
+                <tr>
+                    <td style="color:white;font-size:55px";align="left"><b>RPM</b></td>
+                    <td style="color:white;font-size:55px";align="left"><b><span id="getdynrpm1"></span> 1/min<b></td>
+                </tr>
+        </tbody>
+    </table>
+ </body>
+</html>
