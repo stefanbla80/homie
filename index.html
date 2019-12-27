@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPM Measuring</title>
+</head>
+<body>
+    <script>
+    function updateRPM()
+    {
+        fetch( "/get_rpm" )
+        .then( response => {
+        if( !response.ok )
+            throw new Error( "fetch failed" ) ;
+        return response.json() ;
+        } )
+        .then( json => document.querySelector("#rpm").textContent = json.rpm )
+    }
+    updateRPM() ;
+    setInterval( updateRPM, 1500 ) ;
+    </script>
+<h1> RPM Measuring</h1>
+<p>RPM: <span id="rpm">measuring..."</span></p>
+</body>
+</html>
