@@ -2,7 +2,20 @@
 homie | Rasperry pi project for temperature, voltage and rpm ...
 
 Die Hauptdatei ist "homie.py" welche mit "index.html" verknüpft ist. Die "index.html" triggert mit dem Skript
-<script> function updateTemperature1() { fetch( "/getdyntemp1" ) .then( response => { if( !response.ok ) throw new Error( "fetch failed" ) ; return response.json() ; } ) .then( json => document.querySelector("#getdyntemp1").textContent = json.getdyntemp1 ) } updateTemperature1() ; setInterval( updateTemperature1, 1000 ) ; </script>
+  <script>
+   function updateTemperature1()
+   {
+      fetch( "/getdyntemp1" )
+         .then( response => {
+            if( !response.ok )
+               throw new Error( "fetch failed" ) ;
+            return response.json() ;
+         } )
+         .then( json => document.querySelector("#getdyntemp1").textContent = json.getdyntemp1 )
+   }
+   updateTemperature1() ;
+   setInterval( updateTemperature1, 1000 ) ;
+  </script>
 
 in regelmäßigen Abständen das Python Programm "homie.py" an und liest z. B. die Temperaturwerte der beiden Temperatursensoren aus bzw. auch den Spannungswert.
 
